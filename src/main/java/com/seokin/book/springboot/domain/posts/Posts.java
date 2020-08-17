@@ -1,6 +1,7 @@
 package com.seokin.book.springboot.domain.posts;
 
 import com.seokin.book.springboot.domain.BaseTimeEntity;
+import com.sun.imageio.plugins.common.SingleTileRenderedImage;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,26 +24,31 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String device_nm;
 
+    @Column(length = 500, nullable = false)
     private String serial_no;
 
-    //@Column(columnDefinition = "TEXT", nullable = true)
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String loadage;
-
-    private String location;
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String latitude;
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String longitude;
 
 
     @Builder
-    public Posts(String device_nm, String serial_no, String loadage, String location) {
+    public Posts(String device_nm, String serial_no, String loadage, String latitude, String longitude) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
         this.loadage = loadage;
-        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    public void update(String device_nm, String serial_no) {
+    public void update(String device_nm, String serial_no, String latitude, String longitude) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
         //this.loadage = loadage;
-        //this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }

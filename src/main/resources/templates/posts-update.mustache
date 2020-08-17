@@ -21,10 +21,11 @@
                 <label for="author">적재량</label>
                 <input type="text" class="form-control" id="loadage" value="{{post.loadage" readonly>
             </div>}}
-            {{!<div class="form-group">
+            <div class="form-group">
                 <label for="title">위치</label>
-                <input type="text" class="form-control" id="location" value="{{post.location">
-            </div>}}
+                <input type="text" class="form-control" id="latitude" value="{{post.latitude}}">
+                <input type="text" class="form-control" id="longitude" value="{{post.longitude}}">
+            </div>
         </form>
         <a href="/" role="button" class="btn btn-secondary">취소</a>
         <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>

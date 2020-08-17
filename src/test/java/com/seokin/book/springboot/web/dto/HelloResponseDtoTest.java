@@ -1,4 +1,4 @@
-package com.seokin.book.springboot.web.dto;
+/*package com.seokin.book.springboot.web.dto;
 
 import org.junit.Test;
 
@@ -21,4 +21,4 @@ public class HelloResponseDtoTest {
         //assertThat : assertj(테스트 검증 라이브러리) 테스트 검증 메소드, 검증 대상을 메소드 인자로 받음, 메소드 체이닝 지원
         //isEqualTo : assertj의 동등 비교 메소드, assertThat의 값과 isEqualTo의 값이 같으면 성공
     }
-}
+}*/

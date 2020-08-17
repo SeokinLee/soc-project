@@ -1,91 +1,91 @@
 {{>layout/header2}}
 
 <body>
-    <header id="header">
-        <div class="inner">
-            <a href="/" class="logo"><strong>Save Our City</strong></a>
-            <nav id="nav">
-                <!--로그인탭-->
-                {{#userName}}
-                    Logged in as: <span id="user">{{userName}}</span>
-                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-                {{/userName}}
-                {{^userName}}
-                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">로그인</a>
-                {{/userName}}
-                <a href="/">홈</a>
-                <a href="/list">목록</a>
-                <a href="/path">경로</a>
-                <a href="/statistics">통계</a>
-            </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-    </header>
+<header id="header">
+    <div class="inner">
+        <a href="/" class="logo"><strong>Save Our City</strong></a>
+        <nav id="nav">
+            <!--로그인탭-->
+            {{#userName}}
+                Logged in as: <span id="user">{{userName}}</span>
+                <a href="/logout"  role="button">Logout</a>
+            {{/userName}}
+            {{^userName}}
+                <a href="/oauth2/authorization/google"  role="button">로그인</a>
+            {{/userName}}
+            <a href="/">홈</a>
+            <a href="/list">목록</a>
+            <a href="/path">경로</a>
+            <a href="/statistics">통계</a>
+        </nav>
+        <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+</header>
 
-                    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Welcome to SOC</h1>
-            </header>
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <header>
+            <h1>Welcome to SOC</h1>
+        </header>
 
-            <div class="flex ">
-                <div OnClick="location.href ='/list'" style="cursor:pointer;">
-                    <span class="icon fa-car"></span>
-                    <h3>목록</h3>
-                    <p>Suspendisse amet ullamco</p>
-                </div>
-
-                <div OnClick="location.href ='/path'" style="cursor:pointer;">
-                    <span class="icon fa-camera"></span>
-                    <h3>경로</h3>
-                    <p>Class aptent taciti ad litora</p>
-                </div>
-
-                <div OnClick="location.href ='/statistics'" style="cursor:pointer;">
-                    <span class="icon fa-bug"></span>
-                    <h3>통계</h3>
-                    <p>Nulla vitae mauris non felis</p>
-                </div>
+        <div class="flex ">
+            <div OnClick="location.href ='/list'" style="cursor:pointer;">
+                <span class="icon fa-align-left"></span>
+                <h3>목록</h3>
+                <p>사용자가 소유한<br>쓰레기통 목록을 보여줍니다.</p>
             </div>
 
-            <footer>
-                <a href="#" class="button">Get Started</a>
-            </footer>
-        </div>
-    </section>
+            <div OnClick="location.href ='/path'" style="cursor:pointer;">
+                <span class="icon fa-map"></span>
+                <h3>경로</h3>
+                <p>쓰레기통을 수거할 때<br>최적의 경로를 보여줍니다.</p>
+            </div>
 
-
-    <!-- Three -->
-    <section id="three" class="wrapper align-center">
-        <div class="inner">
-            <div class="flex flex-2">
-                <article>
-                    <div class="image round">
-                        <img src="/images/pic01.jpg" alt="Pic 01" />
-                    </div>
-                    <header>
-                        <h3>Lorem ipsum<br /> dolor amet nullam</h3>
-                    </header>
-                    <p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
-                    <footer>
-                        <a href="#" class="button">Learn More</a>
-                    </footer>
-                </article>
-                <article>
-                    <div class="image round">
-                        <img src="/images/pic02.jpg" alt="Pic 02" />
-                    </div>
-                    <header>
-                        <h3>Sed feugiat<br /> tempus adipicsing</h3>
-                    </header>
-                    <p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
-                    <footer>
-                        <a href="#" class="button">Learn More</a>
-                    </footer>
-                </article>
+            <div OnClick="location.href ='/statistics'" style="cursor:pointer;">
+                <span class="icon fa-bar-chart"></span>
+                <h3>통계</h3>
+                <p>사용자가 소유한 쓰레기통의<br>최근 통계량을 보여줍니다.</p>
             </div>
         </div>
-    </section>
+
+        <footer>
+            <a href="#" class="button">Get Started</a>
+        </footer>
+    </div>
+</section>
+
+
+<!-- Three -->
+<section id="three" class="wrapper align-center">
+    <div class="inner">
+        <div class="flex flex-2">
+            <article>
+                <div class="image round">
+                    <img src="/images/pic01.jpg" alt="Pic 01" />
+                </div>
+                <header>
+                    <h3>Lorem ipsum<br /> dolor amet nullam</h3>
+                </header>
+                <p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
+                <footer>
+                    <a href="#" class="button">Learn More</a>
+                </footer>
+            </article>
+            <article>
+                <div class="image round">
+                    <img src="/images/pic02.jpg" alt="Pic 02" />
+                </div>
+                <header>
+                    <h3>Sed feugiat<br /> tempus adipicsing</h3>
+                </header>
+                <p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
+                <footer>
+                    <a href="#" class="button">Learn More</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+</section>
 
 {{>layout/footer2}}

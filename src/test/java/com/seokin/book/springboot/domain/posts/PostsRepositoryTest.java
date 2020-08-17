@@ -1,4 +1,4 @@
-package com.seokin.book.springboot.domain.posts;
+/*package com.seokin.book.springboot.domain.posts;
 
 import org.junit.After;
 import org.junit.Test;
@@ -27,13 +27,12 @@ public class PostsRepositoryTest {
     @Test
     public void 게시글저장_불러오기() {
         //given
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
+        String device_nm = "쓰레기통명";
+        String serial_no = "시리얼번호";
 
         postsRepository.save(Posts.builder()//테이블 posts에 insert/update 쿼리를 실행, id값이 있다면 update, 없다면 insert
-                .title(title)
-                .content(content)
-                .author("seokinly@gmail.com")
+                .device_nm(device_nm)
+                .serial_no(serial_no)
                 .build());
 
         //when
@@ -41,8 +40,8 @@ public class PostsRepositoryTest {
 
         //then
         Posts posts = postsList.get(0);
-        assertThat(posts.getTitle()).isEqualTo(title);
-        assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(posts.getDevice_nm()).isEqualTo(device_nm);
+        assertThat(posts.getSerial_no()).isEqualTo(serial_no);
     }
 
     @Test
@@ -50,9 +49,8 @@ public class PostsRepositoryTest {
         //given
         LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
         postsRepository.save(Posts.builder()
-                .title("title")
-                .content("content")
-                .author("author")
+                .device_nm("device_nm")
+                .serial_no("serial_no")
                 .build());
         //when
         List<Posts> postsList = postsRepository.findAll();
@@ -65,4 +63,4 @@ public class PostsRepositoryTest {
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
     }
-}
+}*/

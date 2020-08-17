@@ -1,4 +1,4 @@
-{{>layout/header}}
+{{>layout/header2}}
 
 <h1>쓰레기통 등록</h1>
 
@@ -10,19 +10,20 @@
                 <input type="text" class="form-control" id="device_nm" placeholder="쓰레기통명을 입력하세요">
             </div>
             <div class="form-group">
-                <label for="location">시리얼번호</label>
+                <label for="device_nm">시리얼번호</label>
                 <input type="text" class="form-control" id="serial_no" placeholder="시리얼번호를 입력하세요">
             </div>
-            <!--
+
             <div class="form-group">
-                <label for="content"> 설명 </label>
-                <textarea class="form-control" id="content" placeholder="설명을 입력하세요"></textarea>
+                <label for="device_nm">위치</label>
+                <input type="text" class="form-control" id="latitude" placeholder="위도를 입력하세요">
+                <input type="text" class="form-control" id="longitude" placeholder="경도를 입력하세요">
             </div>
-            -->
+
         </form>
         <a href="/list" role="button" class="btn btn-secondary">취소</a>
         <button type="button" class="btn btn-primary" id="btn-save">등록</button>
     </div>
 </div>
 
-{{>layout/footer}}
+{{>layout/footer2}}

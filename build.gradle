@@ -41,6 +41,6 @@ dependencies {
     /*Web*/
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.0.RELEASE'
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile("org.springframework.security:spring-security-test")
+    //testCompile('org.springframework.boot:spring-boot-starter-test')
+    //testCompile("org.springframework.security:spring-security-test")
 }

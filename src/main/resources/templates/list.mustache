@@ -7,15 +7,15 @@
                 <!--로그인탭-->
                 {{#userName}}
                     Logged in as: <span id="user">{{userName}}</span>
-                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                    <a href="/logout"  role="button">Logout</a>
                 {{/userName}}
                 {{^userName}}
-                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">로그인</a>
+                    <a href="/oauth2/authorization/google"  role="button">로그인</a>
                 {{/userName}}
                 <a href="/">홈</a>
                 <a href="/list">목록</a>
                 <a href="/path">경로</a>
-                <a href="/statistic">통계</a>
+                <a href="/statistics">통계</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -26,7 +26,7 @@
         <div class="inner">
             <header class="align-center">
                 <h2>쓰레기통 목록</h2>
-                <p><a href="/posts/save" role="button" class="btn btn-primary">쓰레기통 등록</a></p>
+                <p><a href="/posts/save" role="button" class="btn btn-primary" disabled>쓰레기통 등록</a></p>
             </header>
             <!-- 목록 출력 영역 -->
             <table class="table table-horizontal table-bordered">
@@ -46,9 +46,8 @@
                         {{!<td>{{id}</td>}}
                         <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
                         <td>{{serial_no}}</td>
-                        <!--값이 없어 왼쪽으로 밀림-->
-                        {{!<td>{{location}</td>
-                        <td>{{loadage}</td>}}
+                        <td>lat: {{latitude}}<br>lng: {{longitude}}</td>
+                        <!--적재량-->
                         <td>{{modifiedDate}}</td>
                     </tr>
                 {{/posts}}

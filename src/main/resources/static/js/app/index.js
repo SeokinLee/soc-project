@@ -17,6 +17,8 @@ var main = {
         var data = {
             device_nm: $('#device_nm').val(),
             serial_no: $('#serial_no').val(),
+            latitude: $('#latitude').val(),
+            longitude: $('#longitude').val()
             //loadage: $('#loadage').val()
         };
 
@@ -36,7 +38,9 @@ var main = {
     update : function () {
         var data = {
             device_nm: $('#device_nm').val(),
-            serial_no: $('#serial_no').val()
+            serial_no: $('#serial_no').val(),
+            latitude: $('#latitude').val(),
+            longitude: $('#longitude').val()
             //location: $('#location').val()
         };
 

@@ -1,4 +1,4 @@
-package com.seokin.book.springboot.web;
+/*package com.seokin.book.springboot.web;
 
 import com.seokin.book.springboot.config.auth.SecurityConfig;
 import org.junit.Test;
@@ -52,4 +52,4 @@ public class HelloControllerTest {
                 .andExpect(jsonPath("$.name", is(name)))//JSON 응답값을 필드별로 검증할 수 있는 메소드, $를 기준으로 필드명 명시
                 .andExpect(jsonPath("$.amount", is(amount)));
     }
-}
+}*/
