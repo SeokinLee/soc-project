@@ -1,0 +1,36 @@
+{{>layout/header2}}
+<body class="subpage">
+    <header id="header">
+        <div class="inner">
+            <a href="/" class="logo"><strong>Save Our City</strong></a>
+            <nav id="nav">
+                <!--로그인탭-->
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout"  role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google"  role="button">로그인</a>
+                {{/userName}}
+                <a href="/">홈</a>
+                <a href="/list">목록</a>
+                <a href="/path">경로</a>
+                <a href="/statistics">통계</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <!-- Three -->
+    <section id="three" class="wrapper">
+        <div class="inner">
+            <header class="align-center">
+                <h2>최적 경로</h2>
+                <p>수거자가 쓰레기를 수거할때 최적의 경로를 지도에 표시</p>
+            </header>
+            <p>지도 지도 지도</p>
+
+        </div>
+    </section>
+
+{{>layout/footer2}}

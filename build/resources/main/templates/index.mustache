@@ -1,0 +1,43 @@
+{{>layout/header}}
+    <h1 style="color:green; text-decoration:underline">Spring Boot Test</h1>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/posts/save" role="button" class="btn btn-primary">쓰레기통 등록</a>
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <!-- <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a> -->
+                {{/userName}}
+            </div>
+        </div>
+        <br>
+        <!-- 목록 출력 영역 -->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>쓰레기통 번호</th>
+                <th>쓰레기통명</th>
+                <th>시리얼번호</th>
+                <th>적재량</th>
+                <th>수정한 날짜</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#posts}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                    <td>{{serial_no}}</td>
+                    <td>{{loadage}}</td>
+                    <td>{{modifiedDate}}</td>
+                </tr>
+            {{/posts}}
+            </tbody>
+        </table>
+    </div>
+
+{{>layout/footer}}

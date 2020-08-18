@@ -1,0 +1,58 @@
+{{>layout/header2}}
+<body class="subpage">
+    <header id="header">
+        <div class="inner">
+            <a href="/" class="logo"><strong>Save Our City</strong></a>
+            <nav id="nav">
+                <!--로그인탭-->
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout"  role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google"  role="button">로그인</a>
+                {{/userName}}
+                <a href="/">홈</a>
+                <a href="/list">목록</a>
+                <a href="/path">경로</a>
+                <a href="/statistics">통계</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <!-- Three -->
+    <section id="three" class="wrapper">
+        <div class="inner">
+            <header class="align-center">
+                <h2>쓰레기통 목록</h2>
+                <p><a href="/posts/save" role="button" class="btn btn-primary" disabled>쓰레기통 등록</a></p>
+            </header>
+            <!-- 목록 출력 영역 -->
+            <table class="table table-horizontal table-bordered">
+                <thead class="thead-strong">
+                <tr>
+                    <!--<th>쓰레기통 번호</th>-->
+                    <th>쓰레기통명</th>
+                    <th>시리얼번호</th>
+                    <th>위치</th>
+                    <th>적재량</th>
+                    <th>수정한 날짜</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                {{#posts}}
+                    <tr>
+                        {{!<td>{{id}</td>}}
+                        <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                        <td>{{serial_no}}</td>
+                        <td>lat: {{latitude}}<br>lng: {{longitude}}</td>
+                        <!--적재량-->
+                        <td>{{modifiedDate}}</td>
+                    </tr>
+                {{/posts}}
+                </tbody>
+            </table>
+    </section>
+
+{{>layout/footer2}}
