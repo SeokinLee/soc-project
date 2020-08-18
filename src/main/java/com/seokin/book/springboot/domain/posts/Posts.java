@@ -1,7 +1,7 @@
 package com.seokin.book.springboot.domain.posts;
 
 import com.seokin.book.springboot.domain.BaseTimeEntity;
-import com.sun.imageio.plugins.common.SingleTileRenderedImage;
+//import com.sun.imageio.plugins.common.SingleTileRenderedImage;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
