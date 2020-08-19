@@ -27,11 +27,14 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String serial_no;
 
-    @Column(columnDefinition = "TEXT", nullable = true)
+    @Column(length = 500, nullable = true)
     private String loadage;
-    @Column(columnDefinition = "TEXT", nullable = true)
+
+    @Column(length = 500, nullable = false)
     private String latitude;
-    @Column(columnDefinition = "TEXT", nullable = true)
+
+    //@Column(columnDefinition = "TEXT", nullable = true)
+    @Column(length = 500, nullable = false)
     private String longitude;
 
 
