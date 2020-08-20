@@ -18,8 +18,8 @@ var main = {
             device_nm: $('#device_nm').val(),
             serial_no: $('#serial_no').val(),
             latitude: $('#latitude').val(),
-            longitude: $('#longitude').val()
-            //loadage: $('#loadage').val()
+            longitude: $('#longitude').val(),
+            loadage: $('#loadage').val()
         };
 
         $.ajax({
@@ -40,7 +40,8 @@ var main = {
             device_nm: $('#device_nm').val(),
             serial_no: $('#serial_no').val(),
             latitude: $('#latitude').val(),
-            longitude: $('#longitude').val()
+            longitude: $('#longitude').val(),
+            loadage: $('#loadage').val()
             //location: $('#location').val()
         };
 
