@@ -27,7 +27,7 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String serial_no;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500, nullable = true)
     private String loadage;
 
     @Column(length = 500, nullable = false)
