@@ -1,5 +1,18 @@
-{{>layout/header2}}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Save Our City</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/map.css" />
+
+</head>
 <h1>쓰레기통 등록</h1>
 
 <div class="col-md-12">
@@ -19,14 +32,49 @@
             </div>
             <div class="form-group">
                 <label for="device_nm">위치</label>
-                <input type="text" class="form-control" id="latitude" placeholder="위도를 입력하세요">
-                <input type="text" class="form-control" id="longitude" placeholder="경도를 입력하세요">
+                <div class = myDiv>
+                    <div id="map"></div>
+                    <script>
+                        function initMap(listener) {
+                            var myLatlng = {lat: 37.5, lng: 127};
+
+                            var map = new google.maps.Map(
+                                    document.getElementById('map'), {zoom: 10, center: myLatlng});
+
+                            // Create the initial InfoWindow.
+                            var infoWindow = new google.maps.InfoWindow(
+                                    {content: '디바이스의 위치를 지정하시오.', position: myLatlng});
+                            infoWindow.open(map);
+
+                            // Configure the click listener.
+                            map.addListener('click', function (mapsMouseEvent) {
+                                // Close the current InfoWindow.
+                                infoWindow.close();
+
+                                // Create a new InfoWindow.
+                                infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
+                                infoWindow.setContent(mapsMouseEvent.latLng.toString());
+                                infoWindow.open(map);
+                                document.getElementById("latitude").value = mapsMouseEvent.latLng.lat();
+                                document.getElementById('longitude').value = mapsMouseEvent.latLng.lng();
+                            });
+                        }
+                    </script>
+
+                    <script defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap">
+                    </script>
+
+                </div>
+
+                <input type="text" class="form-control" id="latitude" placeholder="자동으로 입력됩니다">
+                <input type="text" class="form-control" id="longitude" placeholder="자동으로 입력됩니다">
             </div>
 
         </form>
+
         <a href="/list" role="button" class="btn btn-secondary">취소</a>
         <button type="button" class="btn btn-primary" id="btn-save">등록</button>
     </div>
 </div>
-
 {{>layout/footer2}}
