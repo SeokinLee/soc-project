@@ -40,7 +40,8 @@
                     <thead class="thead-strong">
                     <tr>
                         <th>device</th>
-                        <th>location</th>
+                        <th>lat</th>
+                        <th>lng</th>
                         <th>loadage</th>
                     </tr>
                     </thead>
@@ -48,7 +49,8 @@
                     {{#posts}}
                         <tr>
                             <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
-                            <td>lat: {{latitude}}<br>lng: {{longitude}}</td>
+                            <td>{{latitude}}</td>
+                            <td>{{longitude}}</td>
                             <td>{{loadage}}</td>
                         </tr>
                     {{/posts}}
@@ -110,12 +112,17 @@
             }
             */
             for (let i = 0; i < data.length; i++) {
+                data[i].lat = Number(data[i].lat);
+                data[i].lng = Number(data[i].lng);
                 waypts.push({//data의 location을 waypts에 push
-                    location: data[i].location,
+                    location: {
+                        lat: data[i].lat,
+                        lng: data[i].lng
+                    },
                     stopover: true//경유지가 경로의 정류장임을 나타내는 부울이며 경로를 두 경로로 분할하는 효과가 있습니다.라고 함
                 });
             }
-            console.log(waypts);
+            console.log(typeof(data[0].lat));
 
             directionsService.route(
                     {

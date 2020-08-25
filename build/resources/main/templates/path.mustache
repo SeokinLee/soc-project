@@ -1,5 +1,8 @@
 {{>layout/header2}}
+<link rel="stylesheet" href="/css/path.css" />
+
 <body class="subpage">
+
     <header id="header">
         <div class="inner">
             <a href="/" class="logo"><strong>Save Our City</strong></a>
@@ -28,9 +31,232 @@
                 <h2>최적 경로</h2>
                 <p>수거자가 쓰레기를 수거할때 최적의 경로를 지도에 표시</p>
             </header>
-            <p>지도 지도 지도</p>
+
+            <!--경로 출력 부분-->
+            <div id="map"></div>
+            <div>
+                <p>경유지 목록</p>
+                <table class="table table-horizontal table-bordered">
+                    <thead class="thead-strong">
+                    <tr>
+                        <th>device</th>
+                        <th>lat</th>
+                        <th>lng</th>
+                        <th>loadage</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    {{#posts}}
+                        <tr>
+                            <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                            <td>{{latitude}}</td>
+                            <td>{{longitude}}</td>
+                            <td>{{loadage}}</td>
+                        </tr>
+                    {{/posts}}
+                    </tbody>
+                </table>
+                <input type="submit" id="submit" value="경로 탐색"/>
+                <div id="directions-panel"></div>
+
+            </div>
 
         </div>
     </section>
 
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&libraries=&v=weekly"
+            defer
+    ></script>
+
+    <!--waypoints script-->
+    <script>
+        "use strict";
+
+        /* 맵 시작 */
+        function initMap() {
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: {
+                    lat: 41.85,
+                    lng: -87.65
+                }
+            });
+            directionsRenderer.setMap(map);
+            /* submit 버튼 클릭 시 경로탐색 실행 */
+            document.getElementById("submit").addEventListener("click", () => {
+                calculateAndDisplayRoute(directionsService, directionsRenderer);
+            });
+        }
+
+        /* 경로탐색 */
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+            var table = document.querySelector("table");
+            //var output = document.querySelector("pre");
+            var data = parseTable(table);//테이블을 배열로 변환
+            const waypts = [];//경유지
+            //console.log(data);
+            //const checkboxArray = document.getElementById("waypoints");
+
+            /* 원본
+            for (let i = 0; i < checkboxArray.length; i++) {
+                if (checkboxArray.options[i].selected) {
+                    waypts.push({
+                        location: checkboxArray[i].value,
+                        stopover: true
+                    });
+                }
+            }
+            */
+            for (let i = 0; i < data.length; i++) {
+                data[i].lat = Number(data[i].lat);
+                data[i].lng = Number(data[i].lng);
+                waypts.push({//data의 location을 waypts에 push
+                    location: {
+                        lat: data[i].lat,
+                        lng: data[i].lng
+                    },
+                    stopover: true//경유지가 경로의 정류장임을 나타내는 부울이며 경로를 두 경로로 분할하는 효과가 있습니다.라고 함
+                });
+            }
+            console.log(typeof(data[0].lat));
+
+            directionsService.route(
+                    {
+                        origin: {//출발지: 디트로이트
+                            lat: 42.358652,
+                            lng: -83.065218
+                        },
+                        destination: {//도착지: 세인트루이스, 근데 이렇게 넣는 거 맞나
+                            lat: 38.644610,
+                            lng: -90.197542
+                        },
+                        waypoints: waypts,
+                        optimizeWaypoints: true,
+                        travelMode: google.maps.TravelMode.DRIVING
+                    },
+                    (response, status) => {
+                        if (status === "OK") {
+                            directionsRenderer.setDirections(response);
+                            const route = response.routes[0];
+                            const summaryPanel = document.getElementById("directions-panel");
+                            summaryPanel.innerHTML = ""; // For each route, display summary information.
+
+                            for (let i = 0; i < route.legs.length; i++) {
+                                const routeSegment = i + 1;
+                                summaryPanel.innerHTML +=
+                                        "<b>Route Segment: " + routeSegment + "</b><br>";
+                                summaryPanel.innerHTML += route.legs[i].start_address + " to ";
+                                summaryPanel.innerHTML += route.legs[i].end_address + "<br>";
+                                summaryPanel.innerHTML +=
+                                        route.legs[i].distance.text + "<br><br>";
+                            }
+                        } else {
+                            window.alert("Directions request failed due to " + status);
+                        }
+                    }
+            );
+        }
+    </script>
+
+    <script>
+        //var table = document.querySelector("table");
+        //var output = document.querySelector("pre");
+        //var data = parseTable(table);
+        //console.log(data);
+        // OUTPUTS
+        // =======
+        //
+        // [
+        //   {
+        //     name: "dave",
+        //     age: "35",
+        //     "eye colour": "blue",
+        //     "coffee?": true,
+        //     food: "sandwich"
+        //   },
+        //   {
+        //     name: "sarah",
+        //     age: "29",
+        //     "eye colour": "brown",
+        //     "coffee?": true,
+        //     food: "soup"
+        //   },
+        //   {
+        //     name: "john",
+        //     age: "42",
+        //     "eye colour": "green",
+        //     "coffee?": false,
+        //     food: "stew"
+        //   }
+        // ]
+
+        /**
+         * @license
+         *
+         * The MIT License (MIT)
+         *
+         * Copyright (c) 2014 Nick Williams
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /**
+         * generates factory functions to convert table rows to objects,
+         * based on the titles in the table's <thead>
+         * @param  {Array<String>} headings the values of the table's <thead>
+         * @return {(row: HTMLTableRowElement) => Object} a function that takes a table row and spits out an object
+         */
+        function mapRow(headings) {
+            return function mapRowToObject({ cells }) {
+                return [...cells].reduce(function(result, cell, i) {
+                    const input = cell.querySelector("input,select");
+                    var value;
+
+                    if (input) {
+                        value = input.type === "checkbox" ? input.checked : input.value;
+                    } else {
+                        value = cell.innerText;
+                    }
+
+                    return Object.assign(result, { [headings[i]]: value });
+                }, {});
+            };
+        }
+
+        /**
+         * given a table, generate an array of objects.
+         * each object corresponds to a row in the table.
+         * each object's key/value pairs correspond to a column's heading and the row's value for that column
+         *
+         * @param  {HTMLTableElement} table the table to convert
+         * @return {Array<Object>}       array of objects representing each row in the table
+         */
+        function parseTable(table) {
+            var headings = [...table.tHead.rows[0].cells].map(
+                    heading => heading.innerText
+            );
+
+            return [...table.tBodies[0].rows].map(mapRow(headings));
+        }
+    </script>
 {{>layout/footer2}}
