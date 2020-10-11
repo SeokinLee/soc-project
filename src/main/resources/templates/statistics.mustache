@@ -38,7 +38,27 @@
                 </div>
             </div>
         </div>
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <!--<th>쓰레기통 번호</th>-->
+                <th>id</th>
+                <th>date_time</th>
+                <th>loadage</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#soc_mariadb.device1}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{date_time}}</td>
+                    <td>{{loadage}}%</td>
+                </tr>
+            {{/soc_mariadb.device1}}
+            </tbody>
+        </table>
     </div>
+
     <script>
 
         var li = [];
@@ -92,25 +112,7 @@
         });
 
     </script>
-    <table class="table table-horizontal table-bordered">
-        <thead class="thead-strong">
-        <tr>
-            <!--<th>쓰레기통 번호</th>-->
-            <th>id</th>
-            <th>date_time</th>
-            <th>loadage</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-        {{#device1}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{date_time}}</td>
-                <td>{{loadage}}%</td>
-            </tr>
-        {{/device1}}
-        </tbody>
-    </table>
+
 </section>
 
 {{>layout/footer2}}
