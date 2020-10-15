@@ -12,7 +12,7 @@ public class PostsListResponseDto {
     private String serial_no;
     private String latitude;
     private String longitude;
-    private String loadage;
+    private String current_loadage;
     private String address;
     private LocalDateTime modifiedDate;
 
@@ -22,7 +22,7 @@ public class PostsListResponseDto {
         this.serial_no = entity.getSerial_no();
         this.latitude = entity.getLatitude();
         this.longitude = entity.getLongitude();
-        this.loadage = entity.getLoadage();
+        this.current_loadage = entity.getCurrent_loadage();
         this.address = entity.getAddress();
         this.modifiedDate = entity.getModifiedDate();
     }

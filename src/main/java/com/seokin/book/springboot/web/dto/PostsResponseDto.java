@@ -9,7 +9,7 @@ public class PostsResponseDto {
     private Long id;
     private String device_nm;
     private String serial_no;
-    private String loadage;
+    private String current_loadage;
     private String address;
     private String latitude;
     private String longitude;
@@ -18,7 +18,7 @@ public class PostsResponseDto {
         this.id = entity.getId();
         this.device_nm = entity.getDevice_nm();
         this.serial_no = entity.getSerial_no();
-        this.loadage = entity.getLoadage();
+        this.current_loadage = entity.getCurrent_loadage();
         this.address = entity.getAddress();
         this.latitude = entity.getLatitude();
         this.longitude = entity.getLongitude();

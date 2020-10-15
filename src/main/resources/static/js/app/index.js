@@ -20,7 +20,7 @@ var main = {
             latitude: $('#latitude').val(),
             longitude: $('#longitude').val(),
             address: $('#address').val(),
-            loadage: $('#loadage').val()
+            current_loadage: $('#current_loadage').val()
         };
 
         $.ajax({
@@ -42,7 +42,7 @@ var main = {
             serial_no: $('#serial_no').val(),
             latitude: $('#latitude').val(),
             longitude: $('#longitude').val(),
-            loadage: $('#loadage').val(),
+            current_loadage: $('#current_loadage').val(),
             address: $('#address').val()
         };
 
