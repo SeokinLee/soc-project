@@ -10,6 +10,7 @@ public class PostsResponseDto {
     private String device_nm;
     private String serial_no;
     private String loadage;
+    private String address;
     private String latitude;
     private String longitude;
 
@@ -18,6 +19,7 @@ public class PostsResponseDto {
         this.device_nm = entity.getDevice_nm();
         this.serial_no = entity.getSerial_no();
         this.loadage = entity.getLoadage();
+        this.address = entity.getAddress();
         this.latitude = entity.getLatitude();
         this.longitude = entity.getLongitude();
     }

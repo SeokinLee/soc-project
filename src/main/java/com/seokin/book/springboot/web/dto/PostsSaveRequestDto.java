@@ -13,14 +13,16 @@ public class PostsSaveRequestDto {
     private String loadage;
     private String latitude;
     private String longitude;
+    private String address;
 
     @Builder
-    public PostsSaveRequestDto(String device_nm, String serial_no, String loadage, String latitude, String longitude) {
+    public PostsSaveRequestDto(String device_nm, String serial_no, String loadage, String latitude, String longitude, String address) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
         this.loadage = loadage;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
     public Posts toEntity() {
@@ -30,6 +32,7 @@ public class PostsSaveRequestDto {
                 .loadage(loadage)
                 .latitude(latitude)
                 .longitude(longitude)
+                .address(address)
                 .build();
     }
 

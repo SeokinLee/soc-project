@@ -26,7 +26,6 @@ public class Posts extends BaseTimeEntity {
 
     @Column(length = 500, nullable = false)
     private String serial_no;
-
     @Column(length = 500, nullable = true)
     private String loadage;
 
@@ -37,21 +36,27 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String longitude;
 
+    @Column(length = 500, nullable = true)
+    private String address;
+
 
     @Builder
-    public Posts(String device_nm, String serial_no, String loadage, String latitude, String longitude) {
+    public Posts(String device_nm, String serial_no, String loadage, String latitude, String longitude, String address) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
         this.loadage = loadage;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
-    public void update(String device_nm, String serial_no, String loadage, String latitude, String longitude) {
+    public void update(String device_nm, String serial_no, String loadage, String latitude, String longitude, String address) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
         this.loadage = loadage;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
+
 }

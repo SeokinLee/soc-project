@@ -36,14 +36,16 @@
                     <div id="map"></div>
                     <script>
                         function initMap(listener) {
+
                             var myLatlng = {lat: 41.85, lng: -87.65};
 
                             var map = new google.maps.Map(
                                     document.getElementById('map'), {zoom: 10, center: myLatlng});
-
+                            const geocoder = new google.maps.Geocoder();
                             // Create the initial InfoWindow.
                             var infoWindow = new google.maps.InfoWindow(
                                     {content: '디바이스의 위치를 지정하시오.', position: myLatlng});
+                            var address = '';
                             infoWindow.open(map);
 
                             // Configure the click listener.
@@ -53,10 +55,38 @@
 
                                 // Create a new InfoWindow.
                                 infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
-                                infoWindow.setContent(mapsMouseEvent.latLng.toString());
+                                //infoWindow.setContent(mapsMouseEvent.latLng.toString());
+
+
+                                var latlng = {
+                                    lat : parseFloat(mapsMouseEvent.latLng.lat()),
+                                    lng : parseFloat(mapsMouseEvent.latLng.lng())
+                                }
+
+                                geocoder.geocode({ location: latlng }, (results, status) => {
+                                    if (status === "OK") {
+                                        if (results[0]) {
+                                            //infoWindow.close();
+                                            map.setZoom(11);
+                                            /*const marker = new google.maps.Marker({
+                                                position: latlng,
+                                                map: map,
+                                            });*/
+                                            infoWindow.setContent(results[0].formatted_address);
+                                            //address = ;
+                                            document.getElementById('address').value = results[1].formatted_address;
+                                            //infowindow.open(map);
+                                        } else {
+                                            window.alert("No results found");
+                                        }
+                                    } else {
+                                        window.alert("Geocoder failed due to: " + status);
+                                    }
+                                });
                                 infoWindow.open(map);
                                 document.getElementById("latitude").value = mapsMouseEvent.latLng.lat();
                                 document.getElementById('longitude').value = mapsMouseEvent.latLng.lng();
+
                             });
                         }
                     </script>
@@ -69,6 +99,8 @@
 
                 <input type="text" class="form-control" id="latitude" placeholder="자동으로 입력됩니다">
                 <input type="text" class="form-control" id="longitude" placeholder="자동으로 입력됩니다">
+                <input type="text" class="form-control" id="address" placeholder="자동으로 입력됩니다">
+
             </div>
 
         </form>

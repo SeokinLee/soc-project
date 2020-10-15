@@ -19,6 +19,7 @@ var main = {
             serial_no: $('#serial_no').val(),
             latitude: $('#latitude').val(),
             longitude: $('#longitude').val(),
+            address: $('#address').val(),
             loadage: $('#loadage').val()
         };
 
@@ -41,8 +42,8 @@ var main = {
             serial_no: $('#serial_no').val(),
             latitude: $('#latitude').val(),
             longitude: $('#longitude').val(),
-            loadage: $('#loadage').val()
-            //location: $('#location').val()
+            loadage: $('#loadage').val(),
+            address: $('#address').val()
         };
 
         var id = $('#id').val();

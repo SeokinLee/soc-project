@@ -29,30 +29,42 @@
                 <p><a href="/posts/save" role="button" class="btn btn-primary" disabled>쓰레기통 등록</a></p>
             </header>
             <!-- 목록 출력 영역 -->
-            <table class="table table-horizontal table-bordered">
-                <thead class="thead-strong">
-                <tr>
-                    <!--<th>쓰레기통 번호</th>-->
-                    <th>쓰레기통명</th>
-                    <th>시리얼번호</th>
-                    <th>위치</th>
-                    <th>적재량</th>
-                    <th>수정한 날짜</th>
-                </tr>
-                </thead>
-                <tbody id="tbody">
-                {{#posts}}
-                    <tr>
-                        {{!<td>{{id}</td>}}
-                        <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
-                        <td>{{serial_no}}</td>
-                        <td>lat: {{latitude}}<br>lng: {{longitude}}</td>
-                        <td>{{loadage}}</td>
-                        <td>{{modifiedDate}}</td>
-                    </tr>
-                {{/posts}}
-                </tbody>
-            </table>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    강남구
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="thead-strong">
+                            <tr>
+                                <!--<th>쓰레기통 번호</th>-->
+                                <th>쓰레기통명</th>
+                                <th>시리얼번호</th>
+                                <th>위치</th>
+                                <th>적재량</th>
+                                <th>수정한 날짜</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            {{#posts}}
+                                <tr>
+                                    {{!<td>{{id}</td>}}
+                                    <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                                    <td>{{serial_no}}</td>
+                                    <td>{{address}}</td><!--address로 수정-->
+                                    <!--<td>lat: {latitude}}<br>lng: {longitude}}</td>-->
+                                    <td>{{loadage}}%</td>
+                                    <td>{{modifiedDate}}</td>
+                                </tr>
+                            {{/posts}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
     </section>
 
 {{>layout/footer2}}

@@ -1,0 +1,116 @@
+{{>layout/header2}}
+
+<body>
+<header id="header">
+    <div class="inner">
+        <a href="/" class="logo"><strong>Save Our City</strong></a>
+        <nav id="nav">
+            <!--로그인탭-->
+            {{#userName}}
+                사용자 : <span id="user">{{userName}}</span>
+                <a href="/logout"  role="button">로그아웃</a>
+            {{/userName}}
+            {{^userName}}
+                <a href="/oauth2/authorization/google"  role="button">로그인</a>
+            {{/userName}}
+            <a href="/">홈</a>
+            <a href="/list">목록</a>
+            <a href="/path">경로</a>
+            <a href="/statistics">통계</a>
+        </nav>
+        <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+</header>
+
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <header>
+            <h1>환영합니다. SOC입니다.</h1>
+        </header>
+
+        <div class="flex ">
+            <div OnClick="location.href ='/list'" style="cursor:pointer;">
+                <span class="icon fa-align-left"></span>
+                <h3><br>목록</h3>
+                <p><br>사용자가 소유한<br>쓰레기통 목록을 보여줍니다.</p>
+            </div>
+
+            <div OnClick="location.href ='/path'" style="cursor:pointer;">
+                <span class="icon fa-map"></span>
+                <h3><br>경로</h3>
+                <p><br>쓰레기통을 수거할 때<br>최적의 경로를 보여줍니다.</p>
+            </div>
+
+            <div OnClick="location.href ='/statistics'" style="cursor:pointer;">
+                <span class="icon fa-bar-chart"></span>
+                <h3><br>통계</h3>
+                <p><br>사용자가 소유한 쓰레기통의<br>최근 통계량을 보여줍니다.</p>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+<!-- Three -->
+<section id="three" class="wrapper align-center">
+    <div class="inner">
+        <div class="flex flex-2">
+            <article>
+                <div class="image round">
+                    <img src="images/pic01.jpg" alt="Pic 01" />
+                </div>
+                <header>
+                    <h3><br>클린 박스(Clean Box)</h3>
+                </header>
+                <p>SOC팀이 제작한 스마트 폐기물 관리<br />시스템 모듈이 내부에 장착되어있다.</p>
+
+            </article>
+            <article>
+                <div class="image round">
+                    <img src="images/pic02.jpg" alt="Pic 02" />
+                </div>
+                <header>
+                    <h3><br>폐기물 통합관리 시스템</h3>
+                </header>
+                <p>쓰레기통 수거 최적경로, 사용자가 보유한 <br>쓰레기통의 적재 통계량을 확인할 수 있다.</p>
+
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <h3>team SOC</h3>
+
+        <form action="#" method="post">
+
+            <div class="field half first">
+                <label for="name">Name</label>
+                <h3>최지혁, 이석인, 임동윤
+            </div>
+            <div class="field half">
+                <label for="email">Email</label>
+                <h3>team_SOC@gmail.com
+            </div>
+            <div class="field">
+                <label for="information">Message</label>
+            </div>
+            <ul class="actions">
+                <p><h3>스마트시티, IoT를 활용한 스마트 폐기물 관리 및 최적경로 지도 표시
+                <br>Smart Waste Management and Optimal Path Map Using IoT</p>
+            </ul>
+        </form>
+
+
+
+    </div>
+</footer>
+
+
+{{>layout/footer2}}

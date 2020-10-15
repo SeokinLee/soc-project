@@ -28,90 +28,220 @@
             <h2>통계</h2>
             <p>사용자가 소유한 쓰레기통의 최근 통계량을 보여줍니다. </p>
         </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <canvas id="myChartOne"></canvas>
+
+        <div class="row">
+            <div class="col col">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">All Device</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/statistics">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <canvas id="myChartTwo"></canvas>
+            </div>
+            <div class="col col">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Device1</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/statistics/device1">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Device2</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/statistics/device2">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Device3</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/statistics/device3">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Device4</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/statistics/device4">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <table class="table table-horizontal table-bordered">
-            <thead class="thead-strong">
-            <tr>
-                <!--<th>쓰레기통 번호</th>-->
-                <th>id</th>
-                <th>date_time</th>
-                <th>loadage</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#soc_mariadb.device1}}
-                <tr>
-                    <td>{{id}}</td>
-                    <td>{{date_time}}</td>
-                    <td>{{loadage}}%</td>
-                </tr>
-            {{/soc_mariadb.device1}}
-            </tbody>
-        </table>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <!--<h1 class="mt-4">Dashboard</h1>-->
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">All Device</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area mr-1"></i>
+                                    Area Chart Example
+                                </div>
+                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="100"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    Bar Chart Example
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="100"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>
+                            DataTable Example
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>date_time</th>
+                                        <th>loadage</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>date_time</th>
+                                        <th>loadage</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {{#device1}}
+                                        <tr>
+                                            <td>{{id}}</td>
+                                            <td>{{date_time}}</td>
+                                            <td>{{loadage}}%</td>
+                                        </tr>
+                                    {{/device1}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 
     <script>
 
-        var li = [];
-        let ldg = [];
+        let posts_d_name = [];
+        let posts_ldg = [];
+
+        let dvc_1_id = [];
+        let dvc_1_dt = [];
+        let dvc_1_ldg = [];
 
             {{#posts}}
-            li.unshift(String({{device_nm}}))
-            ldg.unshift({{loadage}})
+            posts_d_name.push("{{device_nm}}")
+            posts_ldg.push({{loadage}})
             {{/posts}}
-        console.log(li);
-        console.log(ldg);
+
+        {{#device1}}
+        dvc_1_id.push("{{id}}")
+        dvc_1_dt.push("{{date_time}}")
+        dvc_1_ldg.push(parseInt({{loadage}}))
+            {{/device1}}
+
+        console.log(posts_d_name);
 
 
-        let myChartOne = document.getElementById('myChartOne').getContext('2d');
-        let myChartTwo = document.getElementById('myChartTwo').getContext('2d');
-        let barChart = new Chart(myChartOne,{
-            type : 'bar', //pie, line, doughnut, polarArea
+        let myAreaChart = document.getElementById("myAreaChart").getContext('2d');
+        let areaChart = new Chart(myAreaChart,{
+            type : 'polarArea', //pie, line, doughnut, polarArea
             data : {
-                label : li,
-                datasets : [{
-                    label : '적재량',
-                    data : ldg
-                }]
+                datasets: [{
+                    data: posts_ldg,
+                    backgroundColor: [
+                        "#FF6384",
+                        "#4BC0C0",
+                        "#FFCE56",
+                        "#E7E9ED",
+                        "#36A2EB"
+                    ],
+                    label: 'My dataset' // for legend
+                }],
+                labels: posts_d_name
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '날짜별 적재량'
+                },
+
+            }
+        });
+
+        var ctx = document.getElementById("myBarChart");
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dvc_1_dt,
+                datasets: [{
+                    label: "Revenue",
+                    backgroundColor: "rgba(2,117,216,0.2)",
+                    borderColor: "rgba(2,117,216,0.4)",
+                    data: dvc_1_ldg,
+                }],
             },
             options: {
                 scales: {
+                    xAxes: [{
+                        time: {
+                            unit: 'month'
+                        },
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 6
+                        }
+                    }],
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max : 100
+                            max: 100,
+                            maxTicksLimit: 5
+                        },
+                        gridLines: {
+                            display: true
                         }
-                    }]
+                    }],
+                },
+                legend: {
+                    display: false
                 }
             }
         });
-        let barChartTwo = new Chart(myChartTwo,{
-            type : 'bar', //pie, line, doughnut, polarArea
-            data : {
-                labels : ['1월', '2월', '3월', '4월'],
-                datasets : [{
-                    label : '적재량',
-                    data : [
-                        10,
-                        100,
-                        200,
-                        300,
-                        1000
-                    ]
-                }]
-            }
-        });
+
 
     </script>
+
+
+
+
+
 
 </section>
 

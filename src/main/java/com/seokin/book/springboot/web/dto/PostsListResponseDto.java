@@ -13,6 +13,7 @@ public class PostsListResponseDto {
     private String latitude;
     private String longitude;
     private String loadage;
+    private String address;
     private LocalDateTime modifiedDate;
 
     public PostsListResponseDto(Posts entity) {
@@ -22,6 +23,7 @@ public class PostsListResponseDto {
         this.latitude = entity.getLatitude();
         this.longitude = entity.getLongitude();
         this.loadage = entity.getLoadage();
+        this.address = entity.getAddress();
         this.modifiedDate = entity.getModifiedDate();
     }
 }
