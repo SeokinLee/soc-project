@@ -36,12 +36,12 @@
             <div id="map"></div>
             <div>
                 <p>경유지 목록</p>
-                <select name="upto" id=upto" onchange="OnChange(this);">
+                <!--<select name="upto" id=upto" onchange="OnChange(this);">
                     <option value="all" selected>전체 보기</option>
                     <option value="60">60% 이상 보기</option>
                     <option value="70">70% 이상 보기</option>
                     <option value="80">80% 이상 보기</option>
-                </select>
+                </select>-->
                 <table class="table table-horizontal table-bordered" id="table">
                     <thead class="thead-strong">
                     <tr>
@@ -73,6 +73,7 @@
 
         </div>
     </section>
+    <!--
     <script>
         function OnChange(loadage)
         {
@@ -84,20 +85,8 @@
                 document.getElementById("listNewPrice").getElementsByTagName('td').item(newElement).innerHTML = newPrice;
             }
         }
-
-        function button2_click() {
-            var table = document.querySelector("table");
-            var data = parseTable(table);//테이블을 배열로 변환
-        }
-        function button2_click() {
-            var table = document.querySelector("table");
-            var data = parseTable(table);//테이블을 배열로 변환
-            }
-        function button2_click() {
-            var table = document.querySelector("table");
-            var data = parseTable(table);//테이블을 배열로 변환
-        }
     </script>
+    -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&libraries=&v=weekly"
