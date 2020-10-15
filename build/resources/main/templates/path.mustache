@@ -49,7 +49,7 @@
                         <th>address</th>
                         <th>latitude</th>
                         <th>longitude</th>
-                        <th>loadage</th>
+                        <th>current_loadage</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">
@@ -59,7 +59,7 @@
                             <td>{{address}}</td>
                             <td>{{latitude}}</td>
                             <td>{{longitude}}</td>
-                            <td>{{loadage}}%</td>
+                            <td>{{current_loadage}}%</td>
                         </tr>
                     {{/posts}}
                     </tbody>
@@ -75,12 +75,12 @@
     </section>
     <!--
     <script>
-        function OnChange(loadage)
+        function OnChange(current_loadage)
         {
             var table = document.querySelector("table");
             var data = parseTable(table);//테이블을 배열로 변환
 
-            var ldg = loadage[loadage.selectedIndex].value;
+            var ldg = current_loadage[current_loadage.selectedIndex].value;
             if (ldg == 60){
                 document.getElementById("listNewPrice").getElementsByTagName('td').item(newElement).innerHTML = newPrice;
             }
