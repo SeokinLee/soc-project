@@ -19,15 +19,15 @@ public class Device1 {
     private Long id;
 
     @Column(columnDefinition = "TEXT", nullable = true)
-    private String date_time;
+    private String logtime;
 
     @Column(columnDefinition = "TEXT", nullable = true)
     private String loadage;
 
 
     @Builder
-    public Device1(String date_time, String loadage) {
-        this.date_time = date_time;
+    public Device1(String logtime, String loadage) {
+        this.logtime = logtime;
         this.loadage = loadage;
     }
 

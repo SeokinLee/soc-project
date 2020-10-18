@@ -6,12 +6,12 @@ import lombok.Getter;
 @Getter
 public class Device3ListResponseDto {
     private Long id;
-    private String date_time;
+    private String logtime;
     private String loadage;
 
     public Device3ListResponseDto(Device3 entity) {
         this.id = entity.getId();
-        this.date_time = entity.getDate_time();
+        this.logtime = entity.getLogtime();
         this.loadage = entity.getLoadage();
     }
 }
