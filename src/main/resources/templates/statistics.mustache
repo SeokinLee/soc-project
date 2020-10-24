@@ -130,7 +130,7 @@
                                     {{#device1}}
                                         <tr>
                                             <td>{{id}}</td>
-                                            <td>{{date_time}}</td>
+                                            <td>{{logtime}}</td>
                                             <td>{{loadage}}%</td>
                                         </tr>
                                     {{/device1}}
@@ -173,25 +173,25 @@
 
             {{#device1}}
             dvc_1_id.push("{{id}}")
-            dvc_1_dt.push("{{date_time}}")
+            dvc_1_dt.push("{{logtime}}")
             dvc_1_ldg.push(parseInt({{loadage}}))
             {{/device1}}
 
             {{#device2}}
             dvc_2_id.push("{{id}}")
-            dvc_2_dt.push("{{date_time}}")
+            dvc_2_dt.push("{{logtime}}")
             dvc_2_ldg.push(parseInt({{loadage}}))
             {{/device2}}
 
             {{#device3}}
             dvc_3_id.push("{{id}}")
-            dvc_3_dt.push("{{date_time}}")
+            dvc_3_dt.push("{{logtime}}")
             dvc_3_ldg.push(parseInt({{loadage}}))
             {{/device3}}
 
             {{#device4}}
             dvc_4_id.push("{{id}}")
-            dvc_4_dt.push("{{date_time}}")
+            dvc_4_dt.push("{{logtime}}")
             dvc_4_ldg.push(parseInt({{loadage}}))
             {{/device4}}
 
