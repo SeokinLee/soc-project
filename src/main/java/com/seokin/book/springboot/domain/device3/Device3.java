@@ -30,4 +30,9 @@ public class Device3 {
         this.logtime = logtime;
         this.loadage = loadage;
     }
+
+    public void update(String logtime, String loadage) {
+        this.logtime = logtime;
+        this.loadage = loadage;
+    }
 }
