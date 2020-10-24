@@ -9,8 +9,8 @@
             <nav id="nav">
                 <!--로그인탭-->
                 {{#userName}}
-                    Logged in as: <span id="user">{{userName}}</span>
-                    <a href="/logout"  role="button">Logout</a>
+                    사용자: <span id="user">{{userName}}</span>
+                    <a href="/logout"  role="button">로그아웃</a>
                 {{/userName}}
                 {{^userName}}
                     <a href="/oauth2/authorization/google"  role="button">로그인</a>
@@ -39,11 +39,11 @@
                 <table class="table table-horizontal table-bordered">
                     <thead class="thead-strong">
                     <tr>
-                        <th>device</th>
-                        <th>address</th>
-                        <th>lat</th>
-                        <th>lng</th>
-                        <th>loadage</th>
+                        <th>쓰레기통</th>
+                        <th>주소</th>
+                        <th>위도</th>
+                        <th>경도</th>
+                        <th>적재량</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">
