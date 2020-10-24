@@ -60,9 +60,9 @@ public class IndexController {
     public String statistics(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
         model.addAttribute("device1", device1Service.findAllDesc());
-        model.addAttribute("device2", device1Service.findAllDesc());
-        model.addAttribute("device3", device1Service.findAllDesc());
-        model.addAttribute("device4", device1Service.findAllDesc());
+        model.addAttribute("device2", device2Service.findAllDesc());
+        model.addAttribute("device3", device3Service.findAllDesc());
+        model.addAttribute("device4", device4Service.findAllDesc());
         if(user != null){
             model.addAttribute("userName", user.getName());
         }
