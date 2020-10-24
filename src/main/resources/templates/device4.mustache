@@ -115,14 +115,14 @@
                                     <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>logtime</th>
+                                        <th>date_time</th>
                                         <th>loadage</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>id</th>
-                                        <th>logtime</th>
+                                        <th>date_time</th>
                                         <th>loadage</th>
                                     </tr>
                                     </tfoot>
@@ -130,7 +130,7 @@
                                     {{#device4}}
                                         <tr>
                                             <td>{{id}}</td>
-                                            <td>{{logtime}}</td>
+                                            <td>{{date_time}}</td>
                                             <td>{{loadage}}%</td>
                                         </tr>
                                     {{/device4}}
@@ -157,7 +157,7 @@
 
             {{#device4}}
             device_1_ID.push("{{id}}")
-            device_1_DATE_TIME.push("{{logtime}}")
+            device_1_DATE_TIME.push("{{date_time}}")
             device_1_ldg.push(parseInt({{loadage}}))
             {{/device4}}
 

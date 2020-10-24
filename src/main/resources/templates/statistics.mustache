@@ -6,8 +6,8 @@
         <nav id="nav">
             <!--로그인탭-->
             {{#userName}}
-                Logged in as: <span id="user">{{userName}}</span>
-                <a href="/logout"  role="button">Logout</a>
+                사용자: <span id="user">{{userName}}</span>
+                <a href="/logout"  role="button">로그아웃</a>
             {{/userName}}
             {{^userName}}
                 <a href="/oauth2/authorization/google"  role="button">로그인</a>
@@ -32,45 +32,45 @@
         <div class="row">
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">All Device</div>
+                    <div class="card-body">전체 쓰레기통</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics">View Details</a>
+                        <a class="small text-white stretched-link" href="/statistics">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Device1</div>
+                    <div class="card-body">쓰레기통 1</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device1">View Details</a>
+                        <a class="small text-white stretched-link" href="/statistics/device1">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Device2</div>
+                    <div class="card-body">쓰레기통 2</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device2">View Details</a>
+                        <a class="small text-white stretched-link" href="/statistics/device2">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Device3</div>
+                    <div class="card-body">쓰레기통 3</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device3">View Details</a>
+                        <a class="small text-white stretched-link" href="/statistics/device3">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Device4</div>
+                    <div class="card-body">쓰레기통 4</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device4">View Details</a>
+                        <a class="small text-white stretched-link" href="/statistics/device4">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -82,14 +82,14 @@
                 <div class="container-fluid">
                     <!--<h1 class="mt-4">Dashboard</h1>-->
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">All Device</li>
+                        <li class="breadcrumb-item active">전체 쓰레기통</li>
                     </ol>
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area mr-1"></i>
-                                    Area Chart Example
+                                    각 쓰레기통 현재 적재량
                                 </div>
                                 <div class="card-body"><canvas id="myAreaChart" width="100%" height="100"></canvas></div>
                             </div>
@@ -98,7 +98,7 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    Bar Chart Example
+                                    쓰레기통 날짜별 적재량
                                 </div>
                                 <div class="card-body"><canvas id="myBarChart" width="100%" height="100"></canvas></div>
                             </div>
@@ -107,30 +107,30 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            DataTable Example
+                            쓰레기통 적재량 표
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>logtime</th>
-                                        <th>loadage</th>
+                                        <th>아이디</th>
+                                        <th>날짜</th>
+                                        <th>적재량</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>id</th>
-                                        <th>logtime</th>
-                                        <th>loadage</th>
+                                        <th>아이디</th>
+                                        <th>날짜</th>
+                                        <th>적재량</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
                                     {{#device1}}
                                         <tr>
                                             <td>{{id}}</td>
-                                            <td>{{logtime}}</td>
+                                            <td>{{date_time}}</td>
                                             <td>{{loadage}}%</td>
                                         </tr>
                                     {{/device1}}
@@ -153,16 +153,47 @@
         let dvc_1_dt = [];
         let dvc_1_ldg = [];
 
+        let dvc_2_id = [];
+        let dvc_2_dt = [];
+        let dvc_2_ldg = [];
+
+        let dvc_3_id = [];
+        let dvc_3_dt = [];
+        let dvc_3_ldg = [];
+
+        let dvc_4_id = [];
+        let dvc_4_dt = [];
+        let dvc_4_ldg = [];
+
+
             {{#posts}}
             posts_d_name.push("{{device_nm}}")
-            posts_ldg.push({{current_loadage}})
+            posts_ldg.push({{loadage}})
             {{/posts}}
 
-        {{#device1}}
-        dvc_1_id.push("{{id}}")
-        dvc_1_dt.push("{{logtime}}")
-        dvc_1_ldg.push(parseInt({{loadage}}))
+            {{#device1}}
+            dvc_1_id.push("{{id}}")
+            dvc_1_dt.push("{{date_time}}")
+            dvc_1_ldg.push(parseInt({{loadage}}))
             {{/device1}}
+
+            {{#device2}}
+            dvc_2_id.push("{{id}}")
+            dvc_2_dt.push("{{date_time}}")
+            dvc_2_ldg.push(parseInt({{loadage}}))
+            {{/device2}}
+
+            {{#device3}}
+            dvc_3_id.push("{{id}}")
+            dvc_3_dt.push("{{date_time}}")
+            dvc_3_ldg.push(parseInt({{loadage}}))
+            {{/device3}}
+
+            {{#device4}}
+            dvc_4_id.push("{{id}}")
+            dvc_4_dt.push("{{date_time}}")
+            dvc_4_ldg.push(parseInt({{loadage}}))
+            {{/device4}}
 
         console.log(posts_d_name);
 
@@ -177,8 +208,7 @@
                         "#FF6384",
                         "#4BC0C0",
                         "#FFCE56",
-                        "#E7E9ED",
-                        "#36A2EB"
+                        "#FE6211"
                     ],
                     label: 'My dataset' // for legend
                 }],
@@ -187,7 +217,7 @@
             options: {
                 title: {
                     display: true,
-                    text: '날짜별 적재량'
+                    text: '현재 적재량'
                 },
 
             }
@@ -198,11 +228,26 @@
             type: 'line',
             data: {
                 labels: dvc_1_dt,
-                datasets: [{
-                    label: "Revenue",
-                    backgroundColor: "rgba(2,117,216,0.2)",
-                    borderColor: "rgba(2,117,216,0.4)",
+                datasets:[{
+                    label: 'device1',
+                    backgroundColor: "#FF6384",
                     data: dvc_1_ldg,
+                    fill: false,
+                }, {
+                    label: 'device2',
+                    backgroundColor: "#4BC0C0",
+                    data: dvc_2_ldg,
+                    fill: false,
+                }, {
+                    label: 'device3',
+                    backgroundColor: "#FFCE56",
+                    data: dvc_3_ldg,
+                    fill: false,
+                },{
+                    label: 'device4',
+                    backgroundColor: "#FE6211",
+                    data: dvc_4_ldg,
+                    fill: false,
                 }],
             },
             options: {
@@ -240,6 +285,7 @@
 
 
 
+    <script src="/assets/demo/datatables-demo.js"></script>
 
 
 
