@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface Device3Repository extends JpaRepository<Device3, Long> {//JpaRepository<Entity클래스, PK타입>
     // 기본적인 CRUD 메소드 자동 생성
-    @Query("SELECT p FROM device3 p ORDER BY p.id ASC")
+    @Query("SELECT p FROM Device3 p ORDER BY p.id ASC")
     List<Device3> findAllDesc();
 
 
