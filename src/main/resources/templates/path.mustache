@@ -40,6 +40,7 @@
                     <thead class="thead-strong">
                     <tr>
                         <th>device</th>
+                        <th>address</th>
                         <th>lat</th>
                         <th>lng</th>
                         <th>loadage</th>
@@ -49,6 +50,7 @@
                     {{#posts}}
                         <tr>
                             <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                            <td>{{address}}</td>
                             <td>{{latitude}}</td>
                             <td>{{longitude}}</td>
                             <td>{{current_loadage}}%</td>
