@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Getter
 @NoArgsConstructor
-@Entity
+@Entity(name = "device2")
 public class Device2 {
 
     @Id//pk필드 적용
