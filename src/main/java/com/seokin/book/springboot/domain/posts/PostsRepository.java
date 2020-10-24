@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PostsRepository extends JpaRepository<Posts, Long> {//JpaRepository<Entity클래스, PK타입>
                                                                      // 기본적인 CRUD 메소드 자동 생성
-    @Query("SELECT p FROM Posts p ORDER BY p.id ASC")
+    @Query("SELECT p FROM posts p ORDER BY p.id ASC")
     List<Posts> findAllDesc();
 
 
