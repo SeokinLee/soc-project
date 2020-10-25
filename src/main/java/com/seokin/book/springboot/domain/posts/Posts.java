@@ -45,7 +45,7 @@ public class Posts extends BaseTimeEntity {
     public Posts(String device_nm, String serial_no, String current_loadage, String latitude, String longitude, String address) {
         this.device_nm = device_nm;
         this.serial_no = serial_no;
-        //this.current_loadage = current_loadage;
+        this.current_loadage = current_loadage;
         this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
