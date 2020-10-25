@@ -172,16 +172,16 @@
                                 //summaryPanel.innerHTML += "<div class=\"card-header\">";
                                 summaryPanel.innerHTML += "<b>경로 " + routeSegment + "</b><br>";
                                 //summaryPanel.innerHTML += "<div class=\"card-body\">";
-                                summaryPanel.innerHTML += "<table class=\"table table-horizontal table-bordered\">";
-                                summaryPanel.innerHTML += "<thead class=\"thead-strong\">";
+                                summaryPanel.innerHTML += "<table>";
+                                summaryPanel.innerHTML += "<thead>";
                                 summaryPanel.innerHTML += "<tr><th>출발지</th><th>도착지</th><th>거리</th></tr></thead>";
-                                summaryPanel.innerHTML += "<tbody id=\"tbody\">"
+                                summaryPanel.innerHTML += "<tbody>";
                                 summaryPanel.innerHTML += "<tr>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].start_address + "</td>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].end_address + "</td>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].distance.text + "</td>";
                                 summaryPanel.innerHTML += "</tr>";
-                                summaryPanel.innerHTML += "</tbody></table>";
+                                summaryPanel.innerHTML += "</tbody></table><br><br>";
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
