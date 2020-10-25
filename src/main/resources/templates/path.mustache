@@ -30,49 +30,57 @@
             <header class="align-center">
                 <h2>최적 경로</h2>
                 <p>수거자가 쓰레기를 수거할때 최적의 경로를 지도에 표시</p>
+                <input type="submit" id="submit" value="경로 탐색"/>
             </header>
 
             <!--경로 출력 부분-->
-            <input type="submit" id="submit" value="경로 탐색"/>
             <div id="map"></div>
-            <div>
-                <p>경유지 목록</p>
-                <table class="table table-horizontal table-bordered">
-                    <thead class="thead-strong">
-                    <tr>
-                        <th>쓰레기통</th>
-                        <th>주소</th>
-                        <th>lat</th>
-                        <th>lng</th>
-                        <th>적재량</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    {{#posts}}
-                        <tr>
-                            <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
-                            <td>{{address}}</td>
-                            <td>{{latitude}}</td>
-                            <td>{{longitude}}</td>
-                            <td>{{current_loadage}}%</td>
-                        </tr>
-                    {{/posts}}
-                    </tbody>
-                </table>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        경유지 상세정보
-                    </div>
-                    <div class="card-body">
-                        <div class="panel">
 
-                        </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    경유지 목록
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-horizontal table-bordered">
+                            <thead class="thead-strong">
+                            <tr>
+                                <th>쓰레기통</th>
+                                <th>주소</th>
+                                <th>lat</th>
+                                <th>lng</th>
+                                <th>적재량</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            {{#posts}}
+                                <tr>
+                                    <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                                    <td>{{address}}</td>
+                                    <td>{{latitude}}</td>
+                                    <td>{{longitude}}</td>
+                                    <td>{{current_loadage}}%</td>
+                                </tr>
+                            {{/posts}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <!--<div id="panel"></div>-->
-
             </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    상세 노선
+                </div>
+                <div class="card-body">
+                    <div class="route-panel">
+                    </div>
+                </div>
+            </div>
+            <!--<div id="route-panel"></div>-->
+
+
 
         </div>
     </section>
@@ -80,8 +88,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&libraries=&v=weekly&language=ko&region=KR"
             defer
-
-    ></script>/* 언어 설정 : &language=en&region=US */
+    ></script><!--언어 설정 : &language=en&region=US -->
     <!--waypoints script-->
     <script>
         "use strict";
@@ -154,7 +161,7 @@
                         if (status === "OK") {
                             directionsRenderer.setDirections(response);
                             const route = response.routes[0];
-                            const summaryPanel = document.getElementById("panel");
+                            const summaryPanel = document.getElementById("route-panel");
                             summaryPanel.innerHTML = ""; // For each route, display summary information.
 
                             for (let i = 0; i < route.legs.length; i++) {
