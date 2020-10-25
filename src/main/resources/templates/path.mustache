@@ -33,6 +33,7 @@
             </header>
 
             <!--경로 출력 부분-->
+            <input type="submit" id="submit" value="경로 탐색"/>
             <div id="map"></div>
             <div>
                 <p>경유지 목록</p>
@@ -58,8 +59,18 @@
                     {{/posts}}
                     </tbody>
                 </table>
-                <input type="submit" id="submit" value="경로 탐색"/>
-                <div id="directions-panel"></div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        경유지 상세정보
+                    </div>
+                    <div class="card-body">
+                        <div class="panel">
+
+                        </div>
+                    </div>
+                </div>
+                <!--<div id="panel"></div>-->
 
             </div>
 
@@ -143,17 +154,18 @@
                         if (status === "OK") {
                             directionsRenderer.setDirections(response);
                             const route = response.routes[0];
-                            const summaryPanel = document.getElementById("directions-panel");
+                            const summaryPanel = document.getElementById("panel");
                             summaryPanel.innerHTML = ""; // For each route, display summary information.
 
                             for (let i = 0; i < route.legs.length; i++) {
                                 const routeSegment = i + 1;
+                                //상세경로 영어 Route Segment
                                 summaryPanel.innerHTML +=
-                                        "<b>Route Segment: " + routeSegment + "</b><br>";
-                                summaryPanel.innerHTML += route.legs[i].start_address + " to ";
-                                summaryPanel.innerHTML += route.legs[i].end_address + "<br>";
+                                        "<b>상세 경로: " + routeSegment + "</b><br>";
+                                summaryPanel.innerHTML += "출발지: " + route.legs[i].start_address + "<br>";
+                                summaryPanel.innerHTML += "도착지: " + route.legs[i].end_address + "<br>";
                                 summaryPanel.innerHTML +=
-                                        route.legs[i].distance.text + "<br><br>";
+                                        "거리: " + route.legs[i].distance.text + "<br><br>";
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
