@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-success text-white mb-4">
                     <div class="card-body">전체 쓰레기통</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics">상세보기</a>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-primary text-white mb-4">
                     <div class="card-body">쓰레기통 1</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device1">상세보기</a>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-info text-white mb-4">
                     <div class="card-body">쓰레기통 2</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device2">상세보기</a>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-warning text-white mb-4">
                     <div class="card-body">쓰레기통 3</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device3">상세보기</a>
@@ -86,22 +86,22 @@
                         <li class="breadcrumb-item active">전체 쓰레기통</li>
                     </ol>
                     <div class="row">
-                        <div class="col-xl-6">
+                        <div class="col-xl-12">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area mr-1"></i>
                                     각 쓰레기통 현재 적재량
                                 </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="100"></canvas></div>
+                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
-                        <div class="col-xl-6">
+                        <div class="col-xl-12">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
                                     쓰레기통 날짜별 적재량
                                 </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="100"></canvas></div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,14 @@
             dvc_4_ldg.push(parseInt({{loadage}}))
             {{/device4}}
 
-        console.log(posts_d_name);
+
+        let index = dvc_1_id.length;
+        let now_ldg =[];
+        now_ldg.push(dvc_1_ldg[index-1]);
+        now_ldg.push(dvc_2_ldg[index-1]);
+        now_ldg.push(dvc_3_ldg[index-1]);
+        now_ldg.push(dvc_4_ldg[index-1]);
+
 
 
         let myAreaChart = document.getElementById("myAreaChart").getContext('2d');
@@ -204,16 +211,16 @@
             type : 'polarArea', //pie, line, doughnut, polarArea
             data : {
                 datasets: [{
-                    data: posts_ldg,
+                    data: now_ldg,
                     backgroundColor: [
-                        "#FF6384",
+                        "#007bff",
                         "#4BC0C0",
                         "#FFCE56",
                         "#FE6211"
                     ],
                     label: 'My dataset' // for legend
                 }],
-                labels: posts_d_name
+                labels: ['쓰레기통 1','쓰레기통 2','쓰레기통 3','쓰레기통 4']
             },
             options: {
                 title: {
@@ -231,22 +238,26 @@
                 labels: dvc_1_dt,
                 datasets:[{
                     label: 'device1',
-                    backgroundColor: "#FF6384",
+                    backgroundColor: "#007bff",
+                    borderColor: "#007bff",
                     data: dvc_1_ldg,
                     fill: false,
                 }, {
                     label: 'device2',
                     backgroundColor: "#4BC0C0",
+                    borderColor: "#4BC0C0",
                     data: dvc_2_ldg,
                     fill: false,
                 }, {
                     label: 'device3',
                     backgroundColor: "#FFCE56",
+                    borderColor: "#FFCE56",
                     data: dvc_3_ldg,
                     fill: false,
                 },{
                     label: 'device4',
                     backgroundColor: "#FE6211",
+                    borderColor: "#FE6211",
                     data: dvc_4_ldg,
                     fill: false,
                 }],
@@ -258,7 +269,7 @@
                             unit: 'month'
                         },
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             maxTicksLimit: 6
@@ -274,9 +285,6 @@
                             display: true
                         }
                     }],
-                },
-                legend: {
-                    display: false
                 }
             }
         });

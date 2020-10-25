@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-success text-white mb-4">
                     <div class="card-body">전체 쓰레기통</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics">상세보기</a>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-primary text-white mb-4">
                     <div class="card-body">쓰레기통 1</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device1">상세보기</a>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-info text-white mb-4">
                     <div class="card-body">쓰레기통 2</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device2">상세보기</a>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="col col">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-warning text-white mb-4">
                     <div class="card-body">쓰레기통 3</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device3">상세보기</a>
@@ -99,7 +99,7 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    날짜별 수거량
+                                    주차별 수거량
                                 </div>
                                 <div class="card-body"><canvas id="myChartTwo" width="100%" height="100"></canvas></div>
                             </div>
@@ -157,6 +157,21 @@
             device_1_ldg.push(parseInt({{loadage}}))
             {{/device1}}
 
+        let pickup = [0,0,0,0,0];
+        let index =0;
+        for(let i = 0; i < device_1_ldg.length/42; i++)
+        {
+            for(let j = 0; j < device_1_ldg.length/5; j++)
+            {
+                if(device_1_ldg[index+1] ==0)
+                {
+                    pickup[i]+=device_1_ldg[index];
+                }
+                index++;
+            }
+        }
+
+
         let myChartOne = document.getElementById('myChartOne').getContext('2d');
         let myChartTwo = document.getElementById('myChartTwo').getContext('2d');
         let barChart = new Chart(myChartOne,{
@@ -165,7 +180,10 @@
                 labels : device_1_DATE_TIME,
                 datasets : [{
                     label : '적재량',
-                    data : device_1_ldg
+                    data : device_1_ldg,
+                    backgroundColor:  "#007bff",
+                    borderColor:  "#007bff",
+                    fill: true,
                 }]
             },
             options: {
@@ -182,12 +200,13 @@
         let barChartTwo = new Chart(myChartTwo,{
             type : 'bar', //pie, line, doughnut, polarArea
             data : {
-                labels : ['1월', '2월', '3월', '4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                labels : ['1주차', '2주차', '3주차', '4주차','5주차'],
                 datasets : [{
                     label : '수거량(kg)',
-                    data : [
-                        100,150,300,350,500,700,800,950,750,500,300,50
-                    ]
+                    data : pickup,
+                    backgroundColor:  "#007bff",
+                    borderColor:  "#007bff",
+                    fill: true,
                 }]
             },
             options: {
