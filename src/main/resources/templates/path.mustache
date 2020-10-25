@@ -167,31 +167,21 @@
 
                             for (let i = 0; i < route.legs.length; i++) {
                                 const routeSegment = i + 1;
-                                //상세경로 영어 Route Segment
-                                summaryPanel.innerHTML +=
-                                        "<table class=\"table table-horizontal table-bordered\">\n" +
-                                        "                            <thead class=\"thead-strong\">\n" +
-                                        "                            <tr>\n" +
-                                        "                                <th>"
-                                summaryPanel.innerHTML +=
-                                        "<b>경로 " + routeSegment + "</b><br>";
-                                summaryPanel.innerHTML +=
-                                        "</th>\n" +
-                                        "                            </tr>\n" +
-                                        "                            </thead>\n" +
-                                        "                            <tbody id=\"tbody\">" +
-                                        "<tr>\n";
-                                summaryPanel.innerHTML += "<td>출발지</td>";
+                                //상세경로 영어 Route
+                                summaryPanel.innerHTML += "<div class=\"card mb-4\">";
+                                summaryPanel.innerHTML += "<div class=\"card-header\">";
+                                summaryPanel.innerHTML += "경로 " + routeSegment + "</div>";
+                                summaryPanel.innerHTML += "<div class=\"card-body\">";
+                                summaryPanel.innerHTML += "<table class=\"table table-horizontal table-bordered\">\n";
+                                summaryPanel.innerHTML += "<thead class=\"thead-strong\">\n";
+                                summaryPanel.innerHTML += "<tr><th>출발지</th><th>도착지</th><th>거리</th></tr></thead>";
+                                summaryPanel.innerHTML += "<tbody id=\"tbody\">"
+                                summaryPanel.innerHTML += "<tr>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].start_address + "</td>";
-                                summaryPanel.innerHTML += "<td>도착지</td>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].end_address + "</td>";
-                                summaryPanel.innerHTML += "<td>거리</td>";
-                                summaryPanel.innerHTML +=
-                                        "<td>" + route.legs[i].distance.text + "</td>";
-                                summaryPanel.innerHTML += "</tr>\n"+
-                                        "</tbody>\n"+
-                                        "</table><br>";
-
+                                summaryPanel.innerHTML += "<td>" + route.legs[i].distance.text + "</td>";
+                                summaryPanel.innerHTML += "</tr>";
+                                summaryPanel.innerHTML += "</tbody></table></div></div>";
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
