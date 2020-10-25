@@ -169,11 +169,29 @@
                                 const routeSegment = i + 1;
                                 //상세경로 영어 Route Segment
                                 summaryPanel.innerHTML +=
-                                        "<b>경로: " + routeSegment + "</b><br>";
-                                summaryPanel.innerHTML += "출발지: " + route.legs[i].start_address + "<br>";
-                                summaryPanel.innerHTML += "도착지: " + route.legs[i].end_address + "<br>";
+                                        "<table class=\"table table-horizontal table-bordered\">\n" +
+                                        "                            <thead class=\"thead-strong\">\n" +
+                                        "                            <tr>\n" +
+                                        "                                <th>"
                                 summaryPanel.innerHTML +=
-                                        "거리: " + route.legs[i].distance.text + "<br><br>";
+                                        "<b>경로 " + routeSegment + "</b><br>";
+                                summaryPanel.innerHTML +=
+                                        "</th>\n" +
+                                        "                            </tr>\n" +
+                                        "                            </thead>\n" +
+                                        "                            <tbody id=\"tbody\">" +
+                                        "<tr>\n";
+                                summaryPanel.innerHTML += "<td>출발지</td>";
+                                summaryPanel.innerHTML += "<td>" + route.legs[i].start_address + "</td>";
+                                summaryPanel.innerHTML += "<td>도착지</td>";
+                                summaryPanel.innerHTML += "<td>" + route.legs[i].end_address + "</td>";
+                                summaryPanel.innerHTML += "<td>거리</td>";
+                                summaryPanel.innerHTML +=
+                                        "<td>" + route.legs[i].distance.text + "</td>";
+                                summaryPanel.innerHTML += "</tr>\n"+
+                                        "</tbody>\n"+
+                                        "</table><br>";
+
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
