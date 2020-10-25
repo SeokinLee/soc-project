@@ -168,12 +168,12 @@
                             for (let i = 0; i < route.legs.length; i++) {
                                 const routeSegment = i + 1;
                                 //상세경로 영어 Route
-                                summaryPanel.innerHTML += "<div class=\"card mb-4\">";
-                                summaryPanel.innerHTML += "<div class=\"card-header\">";
-                                summaryPanel.innerHTML += "경로 " + routeSegment + "</div>";
-                                summaryPanel.innerHTML += "<div class=\"card-body\">";
-                                summaryPanel.innerHTML += "<table class=\"table table-horizontal table-bordered\">\n";
-                                summaryPanel.innerHTML += "<thead class=\"thead-strong\">\n";
+                                //summaryPanel.innerHTML += "<div class=\"card mb-4\">";
+                                //summaryPanel.innerHTML += "<div class=\"card-header\">";
+                                summaryPanel.innerHTML += "<b>경로 " + routeSegment + "</b><br>";
+                                //summaryPanel.innerHTML += "<div class=\"card-body\">";
+                                summaryPanel.innerHTML += "<table class=\"table table-horizontal table-bordered\">";
+                                summaryPanel.innerHTML += "<thead class=\"thead-strong\">";
                                 summaryPanel.innerHTML += "<tr><th>출발지</th><th>도착지</th><th>거리</th></tr></thead>";
                                 summaryPanel.innerHTML += "<tbody id=\"tbody\">"
                                 summaryPanel.innerHTML += "<tr>";
@@ -181,7 +181,7 @@
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].end_address + "</td>";
                                 summaryPanel.innerHTML += "<td>" + route.legs[i].distance.text + "</td>";
                                 summaryPanel.innerHTML += "</tr>";
-                                summaryPanel.innerHTML += "</tbody></table></div></div>";
+                                summaryPanel.innerHTML += "</tbody></table>";
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
