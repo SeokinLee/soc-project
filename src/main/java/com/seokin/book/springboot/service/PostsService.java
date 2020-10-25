@@ -30,7 +30,7 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
-        posts.update(requestDto.getDevice_nm(), requestDto.getSerial_no(), requestDto.getCurrent_loadage(), requestDto.getLatitude(), requestDto.getLongitude(), requestDto.getAddress());
+        posts.update(requestDto.getDevice_nm(), requestDto.getSerial_no(), /*requestDto.getCurrent_loadage(), */requestDto.getLatitude(), requestDto.getLongitude(), requestDto.getAddress());
 
         return id;
     }
