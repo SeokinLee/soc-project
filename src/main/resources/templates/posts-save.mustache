@@ -39,14 +39,14 @@
                     <script>
                         function initMap(listener) {
 
-                            var myLatlng = {lat: 41.85, lng: -87.65};
+                            var myLatlng = {lat: 40.761044, lng: -73.967125};//뉴욕
 
                             var map = new google.maps.Map(
                                     document.getElementById('map'), {zoom: 10, center: myLatlng});
                             const geocoder = new google.maps.Geocoder();
                             // Create the initial InfoWindow.
                             var infoWindow = new google.maps.InfoWindow(
-                                    {content: '디바이스의 위치를 지정하시오.', position: myLatlng});
+                                    {content: '디바이스의 위치를 지정하세요.', position: myLatlng});
                             var address = '';
                             infoWindow.open(map);
 
@@ -81,9 +81,9 @@
                                         } else {
                                             window.alert("No results found");
                                         }
-                                    } else {
+                                    } /*else {
                                         window.alert("Geocoder failed due to: " + status);
-                                    }
+                                    }알림창 주석처리*/
                                 });
                                 infoWindow.open(map);
                                 document.getElementById("latitude").value = mapsMouseEvent.latLng.lat();
