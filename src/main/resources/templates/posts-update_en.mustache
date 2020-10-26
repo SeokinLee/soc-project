@@ -1,21 +1,21 @@
 {{>layout/header}}
 <link rel="stylesheet" href="/css/map.css" />
 
-<h1>쓰레기통 수정</h1>
+<h1>CLEANBOX modify</h1>
 
 <div class="col-md-12">
     <div class="col-md-4">
         <form>
             <div class="form-group">
-                <label for="title">쓰레기통 번호</label>
+                <label for="title">CLEANBOX Number</label>
                 <input type="text" class="form-control" id="id" value="{{post.id}}" readonly>
             </div>
             <div class="form-group">
-                <label for="title">쓰레기통명</label>
+                <label for="title">CLEANBOX Name</label>
                 <input type="text" class="form-control" id="device_nm" value="{{post.device_nm}}">
             </div>
             <div class="form-group">
-                <label for="title">시리얼번호</label>
+                <label for="title">Serial Number</label>
                 <input type="text" class="form-control" id="serial_no" value="{{post.serial_no}}">
             </div>
             <!--
@@ -25,7 +25,7 @@
             </div>
             -->
             <div class="form-group">
-                <label for="title">위치</label>
+                <label for="title">Location</label>
                 <div class = myDiv>
                     <div id="map"></div>
                     <script>
@@ -38,7 +38,7 @@
                             const geocoder = new google.maps.Geocoder();
                             // Create the initial InfoWindow.
                             var infoWindow = new google.maps.InfoWindow(
-                                    {content: '디바이스의 위치를 지정하시오.', position: myLatlng});
+                                    {content: 'Specify the location of the device.', position: myLatlng});
                             var address = '';
                             infoWindow.open(map);
 
@@ -86,7 +86,7 @@
                     </script>
 
                     <script defer
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap">
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&language=en&region=US">
                     </script>
 
                 </div>
@@ -98,9 +98,9 @@
 
 
         </form>
-        <a href="/list" role="button" class="btn btn-secondary">취소</a>
-        <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
-        <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+        <a href="/list/en" role="button" class="btn btn-secondary">Cancel</a>
+        <button type="button" class="btn btn-primary" id="btn-update">Modifications completed</button>
+        <button type="button" class="btn btn-danger" id="btn-delete">Delete</button>
     </div>
 </div>
 

@@ -2,79 +2,79 @@
 <body class="subpage">
 <header id="header">
     <div class="inner">
-        <a href="/" class="logo"><strong>Save Our City</strong></a>
+        <a href="/en" class="logo"><strong>Save Our City</strong></a>
         <nav id="nav">
             <!--로그인탭-->
             {{#userName}}
-                사용자: <span id="user">{{userName}}</span>
-                <a href="/logout"  role="button">로그아웃</a>
+                Logged in as: <span id="user">{{userName}}</span>
+                <a href="/logout"  role="button">Logout</a>
             {{/userName}}
             {{^userName}}
-                <a href="/oauth2/authorization/google"  role="button">로그인</a>
+                <a href="/oauth2/authorization/google"  role="button">LOGIN</a>
             {{/userName}}
-            <a href="/">홈</a>
-            <a href="/list">목록</a>
-            <a href="/path">경로</a>
-            <a href="/statistics">통계</a>
-            <a class="nav-link dropdown-toggle" href="/statistics/device2" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-kr"> </span> 한국어</a>
+            <a href="/en">HOME</a>
+            <a href="/list/en">LIST</a>
+            <a href="/path/en">PATH</a>
+            <a href="/statistics/en">STATISTICS</a>
+            <a class="nav-link dropdown-toggle" href="/statistics/device2/en" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-gb"> </span> English</a>
             <div class="dropdown-menu" aria-labelledby="dropdown09">
-                <a class="dropdown-item" href="/statistics/device2/en"><span class="flag-icon flag-icon-GB"> </span>  영어</a>
+                <a class="dropdown-item" href="/statistics/device2"><span class="flag-icon flag-icon-kr"> </span>  Korean</a>
             </div>
         </nav>
         <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
     </div>
 </header>
 
-
+<!-- Three -->
 <section id="three" class="wrapper">
     <div class="inner">
         <header class="align-center">
-            <h2>통계</h2>
-            <p>사용자가 소유한 쓰레기통의 최근 통계량을 보여줍니다. </p>
+            <h2>statistics</h2>
+            <p>Shows the latest statistics for device owned by the user.</p>
         </header>
 
         <div class="row">
             <div class="col col">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">전체 쓰레기통</div>
+                    <div class="card-body">All Device</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics">상세보기</a>
+                        <a class="small text-white stretched-link" href="/statistics/en">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">워싱턴 스퀘어 공원</div>
+                    <div class="card-body">Washington Square Park</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device1">상세보기</a>
+                        <a class="small text-white stretched-link" href="/statistics/device1/en">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-info text-white mb-4">
-                    <div class="card-body">크라이슬러 빌딩</div>
+                    <div class="card-body">Chrysler Building</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device2">상세보기</a>
+                        <a class="small text-white stretched-link" href="/statistics/device2/en">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">브루클린 식물원</div>
+                    <div class="card-body">Brooklyn Botanic Garden</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device3">상세보기</a>
+                        <a class="small text-white stretched-link" href="/statistics/device3/en">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">욘 F. 케네디 국제공항</div>
+                    <div class="card-body">John F. Kennedy Airport</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/statistics/device4">상세보기</a>
+                        <a class="small text-white stretched-link" href="/statistics/device4/en">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -87,14 +87,14 @@
                 <div class="container-fluid">
                     <!--<h1 class="mt-4">Dashboard</h1>-->
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">크라이슬러 빌딩</li>
+                        <li class="breadcrumb-item active">Chrysler Building</li>
                     </ol>
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area mr-1"></i>
-                                    날짜별 적재량
+                                    Loadage by date
                                 </div>
                                 <div class="card-body"><canvas id="myChartOne" width="100%" height="100"></canvas></div>
                             </div>
@@ -103,42 +103,44 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    주차별 수거량
+                                    Loadage by collection
                                 </div>
                                 <div class="card-body"><canvas id="myChartTwo" width="100%" height="100"></canvas></div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            쓰레기통 적재량 표
+                            Device log
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>아이디</th>
-                                        <th>날짜</th>
-                                        <th>적재량</th>
+                                        <th>ID</th>
+                                        <th>DateTime</th>
+                                        <th>Loadage</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>아이디</th>
-                                        <th>날짜</th>
-                                        <th>적재량</th>
+                                        <th>ID</th>
+                                        <th>DateTime</th>
+                                        <th>Loadage</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    {{#device2}}
+                                    {{#device1}}
                                         <tr>
                                             <td>{{id}}</td>
                                             <td>{{logtime}}</td>
                                             <td>{{loadage}}%</td>
                                         </tr>
-                                    {{/device2}}
+                                    {{/device1}}
                                     </tbody>
                                 </table>
                             </div>
@@ -182,7 +184,7 @@
             data : {
                 labels : device_2_DATE_TIME,
                 datasets : [{
-                    label : '적재량',
+                    label : 'loadage',
                     data : device_2_ldg,
                     backgroundColor:  "#4BC0C0",
                     borderColor:  "#4BC0C0",
@@ -203,9 +205,9 @@
         let barChartTwo = new Chart(myChartTwo,{
             type : 'bar', //pie, line, doughnut, polarArea
             data : {
-                labels : ['1주차', '2주차', '3주차', '4주차','5주차'],
+                labels : ['Week 1', 'Week 2', 'Week 3', 'Week 4','Week 5'],
                 datasets : [{
-                    label : '수거량(kg)',
+                    label : 'collection(kg)',
                     data : pickup,
                     backgroundColor:  "#4BC0C0",
                     borderColor:  "#4BC0C0",

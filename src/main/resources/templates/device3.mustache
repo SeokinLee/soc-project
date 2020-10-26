@@ -16,6 +16,10 @@
             <a href="/list">목록</a>
             <a href="/path">경로</a>
             <a href="/statistics">통계</a>
+            <a class="nav-link dropdown-toggle" href="/statistics/device3" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-kr"> </span> 한국어</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <a class="dropdown-item" href="/statistics/device3/en"><span class="flag-icon flag-icon-GB"> </span>  영어</a>
+            </div>
         </nav>
         <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
     </div>
@@ -41,7 +45,7 @@
             </div>
             <div class="col col">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">쓰레기통 1</div>
+                    <div class="card-body">워싱턴 스퀘어 공원</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device1">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -50,7 +54,7 @@
             </div>
             <div class="col col">
                 <div class="card bg-info text-white mb-4">
-                    <div class="card-body">쓰레기통 2</div>
+                    <div class="card-body">크라이슬러 빌딩</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device2">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -59,7 +63,7 @@
             </div>
             <div class="col col">
                 <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">쓰레기통 3</div>
+                    <div class="card-body">브루클린 식물원</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device3">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -68,7 +72,7 @@
             </div>
             <div class="col col">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">쓰레기통 4</div>
+                    <div class="card-body">욘 F. 케네디 국제공항</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/statistics/device4">상세보기</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -147,25 +151,25 @@
 
     <script>
 
-        let device_1_ID = [];
-        let device_1_DATE_TIME = [];
-        let device_1_ldg = [];
+        let device_3_ID = [];
+        let device_3_DATE_TIME = [];
+        let device_3_ldg = [];
 
             {{#device3}}
-            device_1_ID.push("{{id}}")
-            device_1_DATE_TIME.push("{{logtime}}")
-            device_1_ldg.push(parseInt({{loadage}}))
+            device_3_ID.push("{{id}}")
+            device_3_DATE_TIME.push("{{logtime}}")
+            device_3_ldg.push(parseInt({{loadage}}))
             {{/device3}}
 
         let pickup = [0,0,0,0,0];
         let index =0;
-        for(let i = 0; i < device_1_ldg.length/42; i++)
+        for(let i = 0; i < device_3_ldg.length/42; i++)
         {
-            for(let j = 0; j < device_1_ldg.length/5; j++)
+            for(let j = 0; j < device_3_ldg.length/5; j++)
             {
-                if(device_1_ldg[index+1] ==0)
+                if(device_3_ldg[index+1] ==0)
                 {
-                    pickup[i]+=device_1_ldg[index];
+                    pickup[i]+=device_3_ldg[index];
                 }
                 index++;
             }
@@ -176,10 +180,10 @@
         let barChart = new Chart(myChartOne,{
             type : 'line', //pie, line, doughnut, polarArea
             data : {
-                labels : device_1_DATE_TIME,
+                labels : device_3_DATE_TIME,
                 datasets : [{
                     label : '적재량',
-                    data : device_1_ldg,
+                    data : device_3_ldg,
                     backgroundColor:  "#FFCE56",
                     borderColor:  "#FFCE56",
                     fill: true,

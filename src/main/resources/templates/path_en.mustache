@@ -5,23 +5,23 @@
 
     <header id="header">
         <div class="inner">
-            <a href="/" class="logo"><strong>Save Our City</strong></a>
+            <a href="/en" class="logo"><strong>Save Our City</strong></a>
             <nav id="nav">
                 <!--로그인탭-->
                 {{#userName}}
-                    사용자: <span id="user">{{userName}}</span>
-                    <a href="/logout"  role="button">로그아웃</a>
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout"  role="button">Logout</a>
                 {{/userName}}
                 {{^userName}}
-                    <a href="/oauth2/authorization/google"  role="button">로그인</a>
+                    <a href="/oauth2/authorization/google"  role="button">LOGIN</a>
                 {{/userName}}
-                <a href="/">홈</a>
-                <a href="/list">목록</a>
-                <a href="/path">경로</a>
-                <a href="/statistics">통계</a>
-                <a class="nav-link dropdown-toggle" href="/path" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-kr"> </span> 한국어</a>
+                <a href="/en">HOME</a>
+                <a href="/list/en">LIST</a>
+                <a href="/path/en">PATH</a>
+                <a href="/statistics/en">STATISTICS</a>
+                <a class="nav-link dropdown-toggle" href="/path/en" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-gb"> </span> English</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown09">
-                    <a class="dropdown-item" href="/path/en"><span class="flag-icon flag-icon-GB"> </span>  영어</a>
+                    <a class="dropdown-item" href="/path"><span class="flag-icon flag-icon-kr"> </span>  Korean</a>
                 </div>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
@@ -32,9 +32,9 @@
     <section id="three" class="wrapper">
         <div class="inner">
             <header class="align-center">
-                <h2>최적 경로</h2>
-                <p>수거자가 쓰레기를 수거할때 최적의 경로를 지도에 표시</p>
-                <input type="submit" id="submit" value="경로 탐색"/>
+                <h2>Optimal Path</h2>
+                <p>Maps show the best route for collectors to collect garbage</p>
+                <input type="submit" id="submit" value="Route navigation"/>
             </header>
 
             <!--경로 출력 부분-->
@@ -43,24 +43,24 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    경유지 목록
+                    Stopover list
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-horizontal table-bordered">
                             <thead class="thead-strong">
                             <tr>
-                                <th>쓰레기통</th>
-                                <th>위치</th>
+                                <th>Device</th>
+                                <th>Location</th>
                                 <th>lat</th>
                                 <th>lng</th>
-                                <th>적재량</th>
+                                <th>Loadage</th>
                             </tr>
                             </thead>
                             <tbody id="tbody">
                             {{#posts}}
                                 <tr>
-                                    <td><a href="/posts/update/{{id}}">{{device_nm}}</a></td>
+                                    <td><a href="/posts/update/{{id}}/en">{{device_nm}}</a></td>
                                     <td>{{address}}</td>
                                     <td>{{latitude}}</td>
                                     <td>{{longitude}}</td>
@@ -76,7 +76,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    상세 노선
+                    Detailed route
                 </div>
                 <div class="card-body">
                     <div id="route-panel">
@@ -91,7 +91,7 @@
     </section>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&libraries=&v=weekly&language=ko&region=KR"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-cLA2_XUrjOs-MI8SyA8SyjeZ5IrcUU&callback=initMap&libraries=&v=weekly&language=en&region=US"
             defer
     ></script><!--언어 설정 : &language=en&region=US -->
     <!--waypoints script-->
@@ -173,13 +173,13 @@
                                 const routeSegment = i + 1;
                                 //상세경로 영어 Route
                                 summaryPanel.innerHTML +=
-                                        "<b>경로 " + routeSegment + "</b><br>";
+                                        "<b>Route " + routeSegment + "</b><br>";
                                 summaryPanel.innerHTML +=
-                                        "출발지 : " + route.legs[i].start_address + "<br>";
+                                        "Start address : " + route.legs[i].start_address + "<br>";
                                 summaryPanel.innerHTML +=
-                                        "도착지 : " + route.legs[i].end_address + "<br>";
+                                        "End address : " + route.legs[i].end_address + "<br>";
                                 summaryPanel.innerHTML +=
-                                        "거리 : " + route.legs[i].distance.text + "<br><br>";
+                                        "Distance : " + route.legs[i].distance.text + "<br><br>";
                             }
                         } else {
                             window.alert("Directions request failed due to " + status);
